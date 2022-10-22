@@ -4,8 +4,8 @@ import argparse
 def get_config():
     parse = argparse.ArgumentParser(description='common train config')
 
-    # 项目配置参数
-    parse.add_argument('-learn-name', type=str, default='traincross', help='本次训练名称')
+    # project parameters
+    parse.add_argument('-learn-name', type=str, default='trainCross', help='本次训练名称')
 
     parse.add_argument('-path-save', type=str, default='../result/', help='保存字典的位置')
     parse.add_argument('-save-best', type=bool, default=False, help='当得到更好的准确度是否要保存')
@@ -18,12 +18,12 @@ def get_config():
     parse.add_argument('-num_workers', type=int, default=4)
     parse.add_argument('-num_class', type=int, default=2)
 
-    # ToDo 更改kmer
+    # TODO  change kmer
     parse.add_argument('-kmer', type=int, default=5)
     # parse.add_argument('-adversarial', type=bool, default=True)
     parse.add_argument('-adversarial', type=bool, default=False)
 
-    # 路径参数
+    # save path
     parse.add_argument('-train-name', type=str, help='-train-name')
     parse.add_argument('-test-name', type=str, help='-test-name')
 
@@ -34,10 +34,10 @@ def get_config():
     parse.add_argument('-model-save-name', type=str, default='BERT', help='保存模型的命名')
     parse.add_argument('-save-figure-type', type=str, default='png', help='保存图片的文件类型')
 
-    # 训练
+    # training
     parse.add_argument('-mode', type=str, default='train-test', help='训练模式')
 
-    # ToDo 更改模型的种类
+    # TODO modify model type
     parse.add_argument('-model', type=str, default='ClassificationDNAbert', help='训练模型名称')
     # parse.add_argument('-model', type=str, default='FusionDNAbert', help='训练模型名称')
     #
@@ -48,7 +48,8 @@ def get_config():
     # parse.add_argument('-optimizer', type=str, default='Adam', help='优化器名称')
     parse.add_argument('-optimizer', type=str, default='AdamW', help='优化器名称')
     parse.add_argument('-loss-func', type=str, default='CE', help='损失函数名称, CE/FL')
-    # TODO:修改batchsize
+
+    # TODO change batchSize
     parse.add_argument('-batch-size', type=int, default=32)
 
     parse.add_argument('-lr', type=float, default=0.00005)

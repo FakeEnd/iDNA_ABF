@@ -3,7 +3,7 @@ import torch.nn as nn
 
 from model import DNAbert
 
-'''Classification DNA bert 模型'''
+'''Classification DNA bert model'''
 class ClassificationBERT(nn.Module):
     def __init__(self, config):
         super(ClassificationBERT,self).__init__()

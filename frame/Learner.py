@@ -95,12 +95,3 @@ if __name__ == '__main__':
     learner.test_model()
     learner.train_model()
     learner.test_model()
-
-    # for i in range(1, 5):
-    #     config.learn_name = 'train_{}'.format(i)
-    #     learner.reset_IOManager()
-    #     learner.reset_visualizer()
-    #     learner.resset_modelManager()
-    #     learner.init_optimizer()
-    #     learner.def_loss_func()
-    #     learner.train_model()

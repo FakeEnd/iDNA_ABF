@@ -6,6 +6,7 @@ import numpy as np
 from model import FusionDNAbert, ClassificationDNAbert, Focal_Loss, FGM
 from sklearn.metrics import auc, roc_curve, precision_recall_curve, average_precision_score
 
+
 class ModelManager():
     def __init__(self, learner):
         self.learner = learner
@@ -85,7 +86,8 @@ class ModelManager():
         if self.mode == 'train-test':
             train_dataloader = self.dataManager.get_dataloder(name='train_set')
             test_dataloader = self.dataManager.get_dataloder(name='test_set')
-            best_performance, best_repres_list, best_label_list, ROC, PRC = self.__SL_train(train_dataloader, test_dataloader)
+            best_performance, best_repres_list, best_label_list, ROC, PRC = self.__SL_train(train_dataloader,
+                                                                                            test_dataloader)
             self.visualizer.roc_data = ROC
             self.visualizer.prc_data = PRC
             self.visualizer.repres_list = best_repres_list
@@ -270,7 +272,7 @@ class ModelManager():
                 if valid_mcc > best_mcc:
                     best_mcc = valid_mcc
                     best_valid_performance = valid_performance
-                    if self.config.save_best :
+                    if self.config.save_best:
                         self.IOManager.save_model_dict(self.model.state_dict(), self.config.model_save_name,
                                                        'MCC', best_mcc)
         return best_valid_performance
@@ -286,7 +288,7 @@ class ModelManager():
 
         if self.config.adversarial == True and self.config.model == 'FusionDNAbert':
             # FGMModel = FGM.FGM(self.model)
-            FGMModel = FGM.FGM(self.model,'bertone.bert','bertone.bert')
+            FGMModel = FGM.FGM(self.model, 'bertone.bert', 'bertone.bert')
 
         for epoch in range(1, self.config.epoch + 1):
             self.model.train()
@@ -299,12 +301,12 @@ class ModelManager():
                 train_loss.backward()
                 if self.config.adversarial == True and self.config.model == 'FusionDNAbert':
                     FGMModel.attack()  # embedding被修改了
-                    self.optimizer.zero_grad() # 如果不想累加梯度，就把这里的注释取消
+                    self.optimizer.zero_grad()  # 如果不想累加梯度，就把这里的注释取消
                     logitsattack, _ = self.model(data)
                     attack_train_loss = self.__get_loss(logitsattack, label)
                     attack_train_loss.backward()
 
-                    FGMModel.restore() #梯度下降，更新参数
+                    FGMModel.restore()  # 梯度下降，更新参数
                 self.optimizer.step()
                 step += 1
 
@@ -329,7 +331,8 @@ class ModelManager():
             '''Periodic Test'''
             if epoch % self.config.interval_test == 0:
                 self.model.eval()
-                test_performance, avg_test_loss, ROC_data, PRC_data, repres_list, label_list = self.__SL_test(test_dataloader)
+                test_performance, avg_test_loss, ROC_data, PRC_data, repres_list, label_list = self.__SL_test(
+                    test_dataloader)
                 self.visualizer.step_test_interval.append(epoch)
                 self.visualizer.test_metric_record.append(test_performance[0])
                 self.visualizer.test_loss_record.append(avg_test_loss.cpu().detach().numpy())

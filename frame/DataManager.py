@@ -5,6 +5,7 @@ import torch.utils.data as Data
 import numpy as np
 from util import util_file
 
+
 class DataManager():
     def __init__(self, learner):
         self.learner = learner
@@ -26,10 +27,12 @@ class DataManager():
 
     def load_data(self):
         self.train_dataset, self.train_label = util_file.load_tsv_format_data(self.config.path_train_data)
-        self.test_dataset,self.test_label = util_file.load_tsv_format_data(self.config.path_test_data)
+        self.test_dataset, self.test_label = util_file.load_tsv_format_data(self.config.path_test_data)
 
-        self.train_dataloader = self.construct_dataset(self.train_dataset,self.train_label, self.config.cuda, self.config.batch_size)
-        self.test_dataloader = self.construct_dataset(self.test_dataset,self.test_label, self.config.cuda, self.config.batch_size)
+        self.train_dataloader = self.construct_dataset(self.train_dataset, self.train_label, self.config.cuda,
+                                                       self.config.batch_size)
+        self.test_dataloader = self.construct_dataset(self.test_dataset, self.test_label, self.config.cuda,
+                                                      self.config.batch_size)
 
     def construct_dataset(self, sequences, labels, cuda, batch_size):
         if cuda:

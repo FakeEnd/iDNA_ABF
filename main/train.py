@@ -8,7 +8,6 @@ sys.path.append(rootPath)
 
 from configuration import config_init
 from frame import Learner
-from util import util_plot
 
 
 def SL_train(config):
@@ -29,12 +28,6 @@ def SL_train(config):
     learner.init_optimizer()
     learner.def_loss_func()
     learner.train_model()
-
-    roc_datas.append(learner.visualizer.roc_data)
-    prc_datas.append(learner.visualizer.prc_data)
-
-    # util_plot.draw_ROC_PRC_curve(roc_datas, prc_datas, name, config)
-    # learner.test_model()
 
 
 def SL_fintune():

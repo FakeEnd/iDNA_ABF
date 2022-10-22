@@ -6,10 +6,10 @@ from transformers import BertTokenizer, BertConfig, BertModel
 # tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 # model = BertModel.from_pretrained("bert-base-uncased")
 
-'''DNA bert 模型'''
+'''DNA bert model'''
 class BERT(nn.Module):
     def __init__(self, config):
-        super(BERT,self).__init__()
+        super(BERT, self).__init__()
         self.config = config
 
         # 加载预训练模型参数
@@ -51,28 +51,3 @@ class BERT(nn.Module):
             representation = self.bert(input_ids, token_type_ids, attention_mask)["pooler_output"]
 
         return representation
-
-
-
-if __name__ == '__main__':
-    import argparse
-
-    parse = argparse.ArgumentParser(description='common meta 8learning config')
-    parse.add_argument('-kmer', type=int, default=6)
-    config = parse.parse_args()
-
-    model = BERT(config).cuda()
-
-    # x = ('TTTAACGATATAACAATCCCAGATTCACAAAGAGATGACCT', 'TGTGTAAGGCGCGTGAACATAGGAAGGAGAAAGCTCGAAGG','TTGATTATACCATTTCAACCATTCAAAGAAGTGCAGATGAT')
-    x = ('TTTAAC', 'TTTAAC')
-
-    # encoded_input = tokenizer("AAAAAA", return_tensors='pt')
-    # output = model(**encoded_input)
-    # tokens = tokenizer.tokenize("CTTGTT")
-    model.train()
-    output = model(x)
-    # print(encoded_input)
-    # ids = torch.tensor([tokenizer.convert_tokens_to_ids(tokens)])
-    # print(ids)
-    # output  = model(**encoded_input)
-    # print(output)
