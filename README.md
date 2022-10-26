@@ -1,5 +1,7 @@
 # iDNA_ABF
 
+> important! Very sorry, some data in the additional file is wrong due to table format problem. We update the new version in the ./additional_file.pdf
+
 ## Introduction
 
 This repository contains code for "iDNA-ABF: a deep learning sequence modeling framework for DNA methylation prediction".
