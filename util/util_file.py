@@ -36,11 +36,9 @@ def load_fasta(filename, skip_first=False):
     return train_dataset, train_label, test_dataset, test_label
 
 
-def load_tsv_format_data(filename, seq_len, dataset='new', skip_head=True):
+def load_tsv_format_data(filename, skip_head=True):
     sequences = []
     labels = []
-
-    len = (seq_len - 1) // 2
 
     with open(filename, 'r') as file:
         if skip_head:
@@ -49,10 +47,7 @@ def load_tsv_format_data(filename, seq_len, dataset='new', skip_head=True):
             if line[-1] == '\n':
                 line = line[:-1]
             list = line.split('\t')
-            if dataset == 'new':
-                sequences.append(list[2][200 - len:200 + len + 1])
-            elif dataset == 'old':
-                sequences.append(list[2])
+            sequences.append(list[2])
             labels.append(int(list[1]))
 
     return sequences, labels
