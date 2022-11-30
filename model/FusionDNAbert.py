@@ -15,8 +15,8 @@ class FusionBERT(nn.Module):
         self.config.kmer = self.config.kmers[1]
         self.berttwo = DNAbert.BERT(self.config)
 
-        self.Ws = torch.randn(1, 768).cuda()
-        self.Wh = torch.randn(1, 768).cuda()
+        self.Ws = nn.Parameter(torch.randn(1, 768).cuda(), requires_grad=True)
+        self.Wh = nn.Parameter(torch.randn(1, 768).cuda(), requires_grad=True)
 
         self.classification = nn.Sequential(
             nn.Linear(768, 20),
