@@ -288,7 +288,8 @@ class ModelManager():
 
         if self.config.adversarial == True and self.config.model == 'FusionDNAbert':
             # FGMModel = FGM.FGM(self.model)
-            FGMModel = FGM.FGM(self.model, 'bertone.bert', 'bertone.bert')
+            FGMModel = FGM.FGM(self.model, 'bertone.bert.embeddings.word_embeddings', 'berttwo.bert.embeddings.word_embeddings')
+            # FGMModel = FGM.FGM(self.model, 'bertone', 'berttwo')
 
         for epoch in range(1, self.config.epoch + 1):
             self.model.train()
@@ -301,7 +302,7 @@ class ModelManager():
                 train_loss.backward()
                 if self.config.adversarial == True and self.config.model == 'FusionDNAbert':
                     FGMModel.attack()  # embedding被修改了
-                    self.optimizer.zero_grad()  # 如果不想累加梯度，就把这里的注释取消
+                    # self.optimizer.zero_grad()  # 如果不想累加梯度，就把这里的注释取消
                     logitsattack, _ = self.model(data)
                     attack_train_loss = self.__get_loss(logitsattack, label)
                     attack_train_loss.backward()
