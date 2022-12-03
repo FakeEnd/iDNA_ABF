@@ -4,8 +4,6 @@ import torch.nn as nn
 from model import DNAbert
 
 '''bert Fusion 模型'''
-
-
 class FusionBERT(nn.Module):
     def __init__(self, config):
         super(FusionBERT, self).__init__()
