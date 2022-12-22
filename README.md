@@ -10,7 +10,7 @@ Here is the [article link](https://genomebiology.biomedcentral.com/articles/10.1
 
 We will provide a google drive for download dataset and model parameters in the future. 
 
-We have provided a base parameters by One drive, you can download by this [One drive share](https://portland-my.sharepoint.com/personal/yingyinyu3-c_my_cityu_edu_hk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fyingyinyu3%2Dc%5Fmy%5Fcityu%5Fedu%5Fhk%2FDocuments%2FiDNA%5FABF%5Fmodel%2FiDNA%5FABF%5Freproduce&ga=1)
+We have provided a base parameters by One drive, you can download by this [One drive share](https://portland-my.sharepoint.com/:f:/g/personal/yingyinyu3-c_my_cityu_edu_hk/En0I9Qe8dpdDrJhtFIMoOgABuSLOjbjHFjMMtZY3cSu3xQ)
 
 Any question is welcomed to be asked by issue and I will try my best to solve your problems.
 
