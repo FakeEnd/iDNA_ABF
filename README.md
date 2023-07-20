@@ -18,8 +18,6 @@ Any question is welcomed to be asked by issue and I will try my best to solve yo
 
 Thanks to Yingying Yu (She used to be a member of Weilab and now continues her phd life in CityU). She offers a nni version based on pytorchlighting and you can reproduce relevant results by her [repository](https://github.com/YUYING07/iDNA-ABF-automl).
 
->A tip: the human cell line dataset is relative easy to compare with and outperform to.
-
 ### basic dictionary
 You can change parameters in `configuration/config.py` to train models.
 
